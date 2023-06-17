@@ -2,7 +2,17 @@
 import React from 'react'
 import Image from "next/image";
 
-const Newscard = ({feed}) => {
+const Newscard = ({favlist, setFavlist, feed, showTrending}) => {
+
+  const setFeedfav = (feed)=>{
+    // e.preventDefault()
+    let oldar=favlist;
+    oldar.push(feed)
+    setFavlist(oldar);
+    localStorage.setItem('favItems', JSON.stringify(favlist));
+    console.log("aaga",favlist)
+  }
+
     // console.log(key)
   return (
    <div class="card col-3" style={{width:"18rem"}, {margin:"15px"}}>
@@ -13,7 +23,7 @@ const Newscard = ({feed}) => {
       <p class="card-text">{feed.publishedAt}</p>
       <a href={feed.url} target="_blank" class="btn btn-primary">Full Article</a>
       <br></br>
-      <a href={feed.url} target="_blank" class="btn btn-success" onClick={}>Like</a>
+      {!showTrending?(<button target="_blank" class="btn btn-success" onClick={()=>setFeedfav(feed)}>Like</button>):(<></>)}
     </div>
   </div>
   )

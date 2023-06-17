@@ -1,7 +1,7 @@
 "use client"
 import { set } from "mongoose";
-import Feed from "../components/Feed";
-import SearchTab from "../components/SearchTab";
+import Feed from "../../components/Feed";
+import SearchTab from "../../components/SearchTab";
 import {useState} from 'react'
 const Home = () => {
 
