@@ -4,7 +4,7 @@ import Feed from "../../components/Feed";
 import SearchTab from "../../components/SearchTab";
 import {useState} from 'react'
 const Home = () => {
-
+console.log('hello trending')
   const [endpoint,setEndpoint] =useState('https://newsapi.org/v2/top-headlines?country=us&apiKey=484c5b7d6e6941e38c2d30ffea3ea41c');
 
   return (<section className='w-full flex-center flex-col'>
