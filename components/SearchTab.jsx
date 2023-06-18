@@ -21,7 +21,7 @@ const SearchTab = ({endpoint, setEndpoint}) => {
 
      const submitButton = (e)=>{
         e.preventDefault();
-        let newstr=`https://newsapi.org/v2/everything?q=${allValues.query}&coutry=${allValues.country}&apiKey=484c5b7d6e6941e38c2d30ffea3ea41c`;
+        let newstr=`https://newsapi.org/v2/everything?q=${allValues.query}&from=${allValues.fromd}&to=${allValues.tilld}&apiKey=484c5b7d6e6941e38c2d30ffea3ea41c`;
 
         setEndpoint(newstr);
         console.log("allValues",endpoint);
@@ -36,26 +36,26 @@ const SearchTab = ({endpoint, setEndpoint}) => {
       <input name="query" type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Query" onChange={changeHandler}  />
       
     </div>
-    {/* <div class="form-group">
+    <div class="form-group">
       <label for="exampleInputEmail1">From Date</label>
-      <input name="fromd"  type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="dd/mm/yy" onChange={changeHandler} />
-      
-    </div> */}
-    {/* <div class="form-group">
-      <label for="exampleInputEmail1">Till Date</label>
-      <input name="tilld"  type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="dd/mm/yy"  onChange={changeHandler}/>
+      <input name="fromd"  type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="yyyy-mm-dd" onChange={changeHandler} />
       
     </div>
     <div class="form-group">
+      <label for="exampleInputEmail1">Till Date</label>
+      <input name="tilld"  type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="yyyy-mm-dd"  onChange={changeHandler}/>
+      
+    </div>
+    {/* <div class="form-group">
       <label for="exampleInputEmail1">Domain</label>
       <input name="domain" type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Domain" onChange={changeHandler} />
       
     </div> */}
-    <div class="form-group">
+    {/* <div class="form-group">
       <label for="exampleInputEmail1">Country</label>
       <input name="country" type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Country"  onChange={changeHandler}/>
       
-    </div>
+    </div> */}
     {/* <div class="form-group">
       <label for="exampleInputEmail1">Source</label>
       <input name="source" type="string" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Source" onChange={changeHandler} />

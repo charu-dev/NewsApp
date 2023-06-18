@@ -46,7 +46,7 @@ useEffect(()=>{
 
   return (
     <div className="row text-center mx-auto" style={{width:"90%"}}>
-         {feedlist.map((feed) => (
+         {feedlist?.map((feed) => (
        
           <Newscard favlist={favlist} setFavlist={setFavlist} key={feed.id} feed={feed} showTrending={showTrending} />
          

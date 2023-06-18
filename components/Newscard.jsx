@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import Image from "next/image";
-
+import {useSession} from 'next-auth/react'
 const Newscard = ({favlist, setFavlist, feed, showTrending}) => {
-
+  const session = useSession();
   const setFeedfav = (feed)=>{
     // e.preventDefault()
     let oldar=favlist;
@@ -23,7 +23,7 @@ const Newscard = ({favlist, setFavlist, feed, showTrending}) => {
       <p class="card-text">{feed.publishedAt}</p>
       <a href={feed.url} target="_blank" class="btn btn-primary">Full Article</a>
       <br></br>
-      {!showTrending?(<button target="_blank" class="btn btn-success" onClick={()=>setFeedfav(feed)}>Like</button>):(<></>)}
+      {(!showTrending && session?.data)?(<button target="_blank" class="btn btn-success" onClick={()=>setFeedfav(feed)}>Like</button>):(<></>)}
     </div>
   </div>
   )
