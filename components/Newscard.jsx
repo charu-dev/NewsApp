@@ -4,13 +4,31 @@ import Image from "next/image";
 import {useSession} from 'next-auth/react'
 const Newscard = ({favlist, setFavlist, feed, showTrending}) => {
   const session = useSession();
-  const setFeedfav = (feed)=>{
+  const setFeedfav = async (feed)=>{
     // e.preventDefault()
     let oldar=favlist;
     oldar.push(feed)
     setFavlist(oldar);
     localStorage.setItem('favItems', JSON.stringify(favlist));
     console.log("aaga",favlist)
+    try {
+         
+      const response = await fetch("/api/favourite/new", {
+        method: "POST",
+        body: JSON.stringify({
+          feed: feed,
+         
+        }),
+      });
+      if(response.ok){
+        console.log("OKAYcharuBoy")
+      }
+      else{
+        console.log("as")
+      }
+    } catch (error) {
+      console.log("maxierror",error);
+    } 
   }
 
     // console.log(key)
