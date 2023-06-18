@@ -1,10 +1,12 @@
 "use client"
+import { useSession } from 'next-auth/react'
 import React from 'react'
 // import EndpointContext from './Feed.jsx'
 import {useEffect, useState,  createContext, useContext} from 'react'
 
 const SearchTab = ({endpoint, setEndpoint}) => {
     // const {endpoint} = useContext(EndpointContext);
+    const {data: session}= useSession()
     const [allValues, setAllValues] = useState({
         query: '',
         domain: '',
@@ -19,9 +21,30 @@ const SearchTab = ({endpoint, setEndpoint}) => {
         
      }
 
-     const submitButton = (e)=>{
+     const submitButton = async (e)=>{
         e.preventDefault();
         let newstr=`https://newsapi.org/v2/everything?q=${allValues.query}&from=${allValues.fromd}&to=${allValues.tilld}&apiKey=484c5b7d6e6941e38c2d30ffea3ea41c`;
+
+        try {
+         
+          const response = await fetch("/api/suit/new", {
+            method: "POST",
+            body: JSON.stringify({
+              query: allValues.query,
+              fromd: allValues.fromd,
+              tilld: allValues.tilld,
+              userId: session?.user.id,
+            }),
+          });
+          if(response.ok){
+            console.log("finalyycuties")
+          }
+          else{
+            console.log("as")
+          }
+        } catch (error) {
+          console.log("supererrordetected",error);
+        } 
 
         setEndpoint(newstr);
         console.log("allValues",endpoint);

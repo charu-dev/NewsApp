@@ -27,7 +27,7 @@ if(session?.data){console.log("welcome bro")}
         <a class="nav-link" href="/trending">Trending</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">History</a>
+        <a class="nav-link" href="/history">History</a>
       </li>
       <li class="nav-item">
         <a class="nav-link ">Profile</a>
